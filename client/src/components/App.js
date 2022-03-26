@@ -7,22 +7,42 @@ import StreamDelete from './streams/StreamDelete';
 import StreamShow from './streams/StreamShow';
 import Header from './Header';
 import history from '../history';
+import Canva from './Canva';
+import WelcomeView from './WelcomeView';
+import Game from './Game';
+import {ContentWrap} from './contentStyles';
+import './App.css'
 
 const App = () =>{
-    return (<div className="ui container">
-                <Router history={history}>
-                    <div>
-                        <Header/>
-                        <Switch>
-                            <Route path="/" exact component={StreamList}/>
-                            <Route path="/streams/new" exact component={StreamCreate}/>
-                            <Route path="/streams/edit/:id" exact component={StreamEdit}/>
-                            <Route path="/streams/delete/:id" exact component={StreamDelete}/>
-                            <Route path="/streams/:id" exact component={StreamShow}/>
-                        </Switch>
-                    </div>
-                </Router>
-            </div>
+    // return(<Canva/>);
+    // return <div className='title'>Hi</div>
+    // return <ContentWrap>
+    //     <h1>Hi</h1>
+    // </ContentWrap>;
+    return (<div className='App'>
+        <Router history={history}>
+            <Route path="/" exact component={WelcomeView}/>
+            <Route path="/play" exact component={Game}/>
+        </Router>
+    </div>
+    
+    
+    // <div className="ui container">
+    //             <Router history={history}>
+    //                 <div>
+    //                     <Header/>
+    //                     <Switch>
+    //                         <Route path="/" exact component={StreamList}/>
+    //                         {/* <Route path="/streams/new" exact component={Canva}/> */}
+    //                         <Route path="/streams/new" exact component={StreamCreate}/>
+
+    //                         <Route path="/streams/wait/:id" exact component={StreamEdit}/>
+    //                         <Route path="/streams/delete/:id" exact component={StreamDelete}/>
+    //                         <Route path="/streams/:id" exact component={StreamShow}/>
+    //                     </Switch>
+    //                 </div>
+    //             </Router>
+    //         </div>
         );
 };
 

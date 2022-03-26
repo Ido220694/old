@@ -4,10 +4,11 @@ FETCH_STREAM, FETCH_STREAMS, DELETE_STREAM, EDIT_STREAM
 import streams from '../apis/streams';
 import history from "../history";
 
-export const signIn = (userId) => {
+export const signIn = (userId, userName) => {
     return {
         type: SIGN_IN,
-        payload: userId
+        payload1: userId,
+        payload2: userName
     };
 };
 
@@ -17,12 +18,14 @@ export const signOut = () =>{
     };
 };
 
-export const createStream = (formValues) =>  async (dispatch, getState) =>{
-    const {userId} = getState().auth;
-
-    const respone = await streams.post('/streams', {...formValues, userId});
+export const createStream = (id, formValues) =>  async (dispatch, getState) =>{
+    const {userId, userName} = getState().auth;
+    const respone = await streams.post('/streams', {...formValues, userId, userName});
     dispatch({type: CREATE_STREAM, payload: respone.data});
-    history.push('/');
+    // const { id2 } = this.props.match.params;
+    // console.log(respone.data.id);
+
+    history.push(`/wait/${respone.data.id}`);
 };
 
 export const fetchStreams = () =>  async dispatch =>{

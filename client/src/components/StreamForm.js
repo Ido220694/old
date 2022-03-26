@@ -37,6 +37,9 @@ const StreamForm = (props) => {
         if (!formValues.title) {
           errors.title = "You must enter a title";
         }
+        else if(formValues.title!=props.word){
+          errors.title = "Wrong Guess. Try Again";
+        }
  
         // if (!formValues.description) {
         //   errors.description = "You must enter a description";
@@ -46,7 +49,7 @@ const StreamForm = (props) => {
       }}
       render={({ handleSubmit }) => (
         <form onSubmit={handleSubmit} className="ui form error">
-          <Field name="title" component={renderInput} label="Enter Title" />
+          <Field name="title" component={renderInput} label="Enter Guess" />
           {/* <Field
             name="points"
             // component={renderInput}

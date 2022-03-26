@@ -22,14 +22,14 @@ class StreamList extends React.Component {
         return this.props.streams.map(stream => {
             return(<div className="item" key={stream.id}>
                     {this.renderAdmin(stream)}
-                    <i className="large middle aligned icon camera"/>
+                    <i className="large middle aligned icon game"/>
                     <div className="content">
                         <Link to={`/streams/${stream.id}`} className="header">
                         {stream.title}
                         </Link>
                         
-                        <div className="description">
-                            {stream.description}
+                        <div className="points">
+                            {stream.points}
                         </div>
                     </div>
                 </div>)
@@ -41,7 +41,7 @@ class StreamList extends React.Component {
             return(
                 <div style={{textAlign:'right'}}>
                     <Link to="/streams/new" className="ui button primary">
-                        create Stream
+                        create new Session
                     </Link>
                 </div>
             );
@@ -49,8 +49,11 @@ class StreamList extends React.Component {
     }
 
     render(){
+        console.log(this.props);
+
         return (<div>
-            <h2>Streams</h2>
+            <h2>Guess and Draw</h2>
+            <h5>Hello {this.props.currentUserName}</h5>
             <div className="ui celled list">{this.renderList()}</div>
             {this.renderCreate()}
         </div>);}
@@ -60,6 +63,7 @@ const mapStateToProps = (state) =>{
     return {
         streams: Object.values(state.streams),
         currentUserId: state.auth.userId,
+        currentUserName: state.auth.userName,
         isSignedIn : state.auth.isSignedIn
     };
 }

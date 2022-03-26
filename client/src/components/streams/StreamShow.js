@@ -46,13 +46,13 @@ class StreamShow extends React.Component {
             return <div>Loading..</div>
         }
 
-        const {title, description} = this.props.stream;
+        const {title, points} = this.props.stream;
 
         return (
             <div>
                 <video ref={this.videoRef} style={{width: '100%'}} controls/>
                 <h1>{title}</h1>
-                <h5>{description}</h5>
+                <h5>{points}</h5>
             </div>);
     }
 

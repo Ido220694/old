@@ -1,17 +1,19 @@
 import React from 'react';
 import {connect } from 'react-redux';
 import {createStream} from '../../actions';
-import StreamForm from './StreamForm';
+import StreamForm from '../StreamForm';
 
 class StreamCreate extends React.Component {
-    
+
     onSubmit = (formValues) => {
-        this.props.createStream(formValues);
+        const { id } = this.props.match.params;
+
+        this.props.createStream(id, formValues);
     }
 
     render(){
         return (<div>
-            <h3>Create a Stream</h3>
+            <h3>Create new Session</h3>
             <StreamForm onSubmit={this.onSubmit}/>
         </div>);
     }
